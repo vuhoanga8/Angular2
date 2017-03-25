@@ -3,15 +3,17 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'my-tutorial',
     template: 
-        `<h2> tutorial component </h2>
-        <h3 [class.redColor]="applyClass">apply applyClass</h3>
-        <h4 [style.color]="blueColor?'blue':'orange'">Apply Style</h4>
+        `<h2> {{title}} </h2>
+        <button (click) ="OnClick(name.value)">click me</button>
+        <input type="text" #name />
         `
         ,
-    styles:[`.redColor{color: red}
-        `]
+    
 })
 export class TutorialComponent{
-    public applyClass = true;
-    public blueColor = false;
+    title = "this is tutorial component"
+
+    OnClick(value){
+        console.log(value);
+    }
 }
