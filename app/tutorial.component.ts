@@ -1,30 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'my-tutorial',
     template:
     `<h2> {{title}} </h2>
-    <p [ngClass]="{classOne:cone,classTwo:ctwo}">This is ngClass apply style</p>
-    <button (click)="toggle()">Toggle</button>
-    <p [ngStyle]="{'font-style': style, 'font-size':size}">This paragraph will be apply to ngStyle</p>
-        `
+    <p>Child component: {{name}}</p>
+
+    <button [disabled]="voted" (click)="vote(true)">Agree</button>
+    <button [disabled]="voted" (click)="vote(fasle)">Disgree</button>
+
+    Result:  {{voted}}
+     `
     ,
-    styles:[`
-        .classOne{
-            color: yellow;
-        }
-        .classTwo{
-            background-color: black;
-        }
-    `]
+    
 })
 export class TutorialComponent {
-    public cone = true;
-    public ctwo = true;
-    public style = "italic";
-    public size = "30px";
-    toggle(){
-        this.cone = !this.cone;
-        this.ctwo = !this.ctwo;
+    @Input() name:string;
+    @Output() onVote = new EventEmitter<boolean>();
+
+
+    public voted:boolean = false;
+
+    vote(agree:boolean){
+        this.voted = true;
+        this.onVote.emit(agree);
+    }
+
+    setName(name: string){
+        this.name = name;
     }
 }
