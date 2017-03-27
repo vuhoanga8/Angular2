@@ -1,36 +1,19 @@
-import { Component, ViewChild } from '@angular/core';
-import { TutorialComponent } from './tutorial.component';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
     template: `
-        <h1> Hello {{title}} </h1>
-        <input type="text" #textName (keyup)="0" />
-        <p>Agree number: {{agree}}. Disagree: {{disgree}}</p>
-        <button (click)="changeName()">Change name</button>
-        <my-tutorial *ngFor="let person of names" [name]="person" (onVote)="parentVote($event)"></my-tutorial>
+        <h1> Hello {{title | lowercase}} </h1>
+        <p>Date today: {{today | date: 'shortDate'}}</p>
+        <p> Percent: {{percentNumber | percent}}</p>
+        <p> e: {{e | number}}
+        <my-tutorial></my-tutorial>
     `,
 })
 export class AppComponent {
-    public title = "Vu Minh Hoang"
-
-    public agree: number = 0;
-    public disgree: number = 0;
-    public names = ['MR A', 'Mr B', 'Mr C', 'Mr D'];
-
-    @ViewChild(TutorialComponent)
-    private tutorialComponent: TutorialComponent;
-    
-
-    parentVote(agree: boolean) {
-        if (agree) this.agree++;
-        else this.disgree++;
-    }
-
-    changeName(){
-        this.tutorialComponent.setName("change name to this");
-    }
-
-
+    public title = "Vu Minh Hoang";
+    public today =  Date.now();
+    public percentNumber= 1.3495;
+    public e:number= 2.1236489547;
 }
 
