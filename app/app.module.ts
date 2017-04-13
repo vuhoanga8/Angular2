@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { TutorialComponent } from './tutorial.component';
 import { PlusComponent } from './plus.component';
 import { HomeComponent } from './home.component';
+import { NotFoundComponent } from './notfound.component';
 import { FormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './employee.component';
 import { EmployeeService } from './service/employee.service';
@@ -12,7 +13,7 @@ import {appRoutes} from './app.routes';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpModule, appRoutes],
-  declarations: [AppComponent, TutorialComponent, PlusComponent, EmployeeListComponent, HomeComponent],
+  declarations: [AppComponent, TutorialComponent, PlusComponent, EmployeeListComponent, HomeComponent, NotFoundComponent],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
