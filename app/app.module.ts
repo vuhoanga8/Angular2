@@ -11,7 +11,10 @@ import { EmployeeService } from './service/employee.service';
 import { EmployeeOverViewComponent } from './employee-overview.component';
 import { EmployeeProjectComponent } from './employee-project.component';
 import { EmployeeDetailComponent } from './employee-detail.component';
-
+import { LoginComponent } from './login.component';
+import { LoginService } from './service/login.service';
+import {CheckLoginGuard} from './guard/check-login.guard';
+import {CheckSaveFormGuard} from './guard/check-save-form.guard';
 import { HttpModule } from '@angular/http';
 import { appRoutes } from './app.routes';
 
@@ -27,9 +30,10 @@ import { appRoutes } from './app.routes';
     EmployeeOverViewComponent,
     EmployeeProjectComponent,
     EmployeeDetailComponent,
+    LoginComponent
 
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, LoginService, CheckLoginGuard, CheckSaveFormGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
